@@ -6,13 +6,13 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 
 from bot import Bot
-from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON,LINKSHORTX_API
+from config import *
 from helper_func import encode
 from pyshorteners import Shortener
 import aiohttp
 
 
-@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']) & ~filters.text)
+@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats','short_link']) & ~filters.text)
 async def channel_post(client: Client, message: Message):
     if not ENABLE_LINK_CREATION:
         return  # Skip link creation if the feature is disabled
@@ -65,3 +65,5 @@ async def new_post(client: Client, message: Message):
     except Exception as e:
         print(e)
         pass
+
+
