@@ -14,6 +14,8 @@ import aiohttp
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']) & ~filters.text)
 async def channel_post(client: Client, message: Message):
+    if not ENABLE_LINK_CREATION:
+        return  # Skip link creation if the feature is disabled
     reply_text = await message.reply_text("Please Wait...!", quote = True)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
@@ -50,8 +52,8 @@ async def channel_post(client: Client, message: Message):
 @Bot.on_message(filters.channel & filters.incoming & filters.chat(CHANNEL_ID))
 async def new_post(client: Client, message: Message):
 
-    if DISABLE_CHANNEL_BUTTON:
-        return
+    if not ENABLE_LINK_CREATION or DISABLE_CHANNEL_BUTTON:
+        return  # Skip link creation if the feature is disabled or button is disabled
 
     converted_id = message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
