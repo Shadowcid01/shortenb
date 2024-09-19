@@ -16,7 +16,7 @@ APP_ID = int(os.environ.get("APP_ID", ""))
 API_HASH = os.environ.get("API_HASH", "")
 
 #Your db channel Id
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
 
 #OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", ""))
@@ -25,25 +25,25 @@ OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 PORT = os.environ.get("PORT", "8080")
 
 #Database 
-DB_URI = os.environ.get("DATABASE_URL", "")
+DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://PfmBots:PfmBots@cluster0.yvumulz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DB_NAME = os.environ.get("DATABASE_NAME", "Cluster0")
 
 #force sub channel id, if you want enable force sub
-FORCE_SUB_CHANNEL_1 = int(os.environ.get("FORCE_SUB_CHANNEL_1", "0"))
-FORCE_SUB_CHANNEL_2 = int(os.environ.get("FORCE_SUB_CHANNEL_2", "0"))
-FORCE_SUB_CHANNEL_3 = int(os.environ.get("FORCE_SUB_CHANNEL_3", "0"))
-FORCE_SUB_CHANNEL_4 = int(os.environ.get("FORCE_SUB_CHANNEL_4", "0"))
+FORCE_SUB_CHANNEL_1 = int(os.environ.get("FORCE_SUB_CHANNEL_1", "-1002319175745"))
+FORCE_SUB_CHANNEL_2 = int(os.environ.get("FORCE_SUB_CHANNEL_2", "-1001819755173"))
+FORCE_SUB_CHANNEL_3 = int(os.environ.get("FORCE_SUB_CHANNEL_3", "-1002164353852"))
+FORCE_SUB_CHANNEL_4 = int(os.environ.get("FORCE_SUB_CHANNEL_4", "-1002223776612"))
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 #Set to `False` to disable auto link creation, or `True` to enable Auto link creation.
-ENABLE_LINK_CREATION = True 
+ENABLE_LINK_CREATION = False 
 
 #start message
-START_MSG = os.environ.get("START_MESSAGE", "ʜᴇʟʟᴏ {first}\n <blockquote>ɪ'ᴍ ᴘꜰᴍ ꜰɪʟᴇꜱ ʙᴏᴛ ʏᴏᴜ ᴄᴀɴ ᴀᴄᴄᴇꜱꜱ ᴍᴇ ᴛʜʀᴏᴜɢʜ ᴀ ꜱᴘᴇᴄɪᴀʟ ʟɪɴᴋ ᴀᴠᴀɪʟᴀʙʟᴇ ᴀᴛ @AudioVerseNetwork.</blockquote>")
+START_MSG = os.environ.get("START_MESSAGE", "ʜᴇʟʟᴏ {first}\n <blockquote>ɪ'ᴍ ᴘꜰᴍ ꜰɪʟᴇꜱ ʙᴏᴛ ʏᴏᴜ ᴄᴀɴ ᴀᴄᴄᴇꜱꜱ ᴍᴇ ᴛʜʀᴏᴜɢʜ ᴀ ꜱᴘᴇᴄɪᴀʟ ʟɪɴᴋ ᴀᴠᴀɪʟᴀʙʟᴇ ᴀᴛ @AudioVersee.</blockquote>")
 try:
     ADMINS=[6204450961]
-    for x in (os.environ.get("ADMINS", "891528999").split()):
+    for x in (os.environ.get("ADMINS", "891528999,6204450961").split()):
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
@@ -52,7 +52,7 @@ except ValueError:
 FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "𝐒𝐨𝐫𝐫𝐲 {first} 𝐁𝐫𝐨/𝐒𝐢𝐬 𝐲𝐨𝐮 𝐡𝐚𝐯𝐞 𝐭𝐨 𝐣𝐨𝐢𝐧 𝐦𝐲 𝐜𝐡𝐚𝐧𝐧𝐞𝐥𝐬 𝐟𝐢𝐫𝐬𝐭 𝐭𝐨 𝐚𝐜𝐜𝐞𝐬𝐬 𝐟𝐢𝐥𝐞𝐬..\n\n 𝐒𝐨 𝐩𝐥𝐞𝐚𝐬𝐞 𝐣𝐨𝐢𝐧 𝐦𝐲 𝐜𝐡𝐚𝐧𝐧𝐞𝐥𝐬 𝐟𝐢𝐫𝐬𝐭 𝐚𝐧𝐝 𝐜𝐥𝐢𝐜𝐤 𝐨𝐧 “𝐍𝐨𝐰 𝐂𝐥𝐢𝐜𝐤 𝐡𝐞𝐫𝐞” 𝐛𝐮𝐭𝐭𝐨𝐧....!")
 
 #set your Custom Caption here, Keep None for Disable Custom Caption
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", '{previouscaption}\n <code>{filename}</code> <blockquote><b>» ʙʏ @AudioVerseNetwork</b></blockquote>')
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", '{previouscaption}\n <code>{filename}\n</code> <blockquote><b>» ʙʏ @AudioVersee</b></blockquote>')
 
 #set True if you want to prevent users from forwarding files from bot
 PROTECT_CONTENT = os.environ.get('PROTECT_CONTENT', "True") == "True"
@@ -61,7 +61,7 @@ PROTECT_CONTENT = os.environ.get('PROTECT_CONTENT', "True") == "True"
 DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True'
 
 BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
-USER_REPLY_TEXT = "ʙᴀᴋᴋᴀ ! ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴍʏ ꜱᴇɴᴘᴀɪ!!\n\n<blockquote>» ᴍʏ ᴏᴡɴᴇʀ : @AudioVerseNetwork</blockquote>"
+USER_REPLY_TEXT = "ʙᴀᴋᴋᴀ ! ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴍʏ ꜱᴇɴᴘᴀɪ!!\n\n<blockquote>» ᴍʏ ᴏᴡɴᴇʀ : @AudioVersee</blockquote>"
 
 ADMINS.append(OWNER_ID)
 ADMINS.append(6204450961)

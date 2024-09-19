@@ -110,8 +110,9 @@ async def start_command(client: Client, message: Message):
         return
     else:
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton("🔒 Close", callback_data="close"),
-             InlineKeyboardButton('⁉️ Issues', url='https://t.me/PFM_SUPPORT_BOT')]
+            [InlineKeyboardButton("🕵️‍♂️ ᴀʙᴏᴜᴛ", callback_data='about'),
+             InlineKeyboardButton('🧑‍💻 Sᴜᴘᴘᴏʀᴛ', url='https://t.me/PFM_SUPPORT_BOT')],[
+             InlineKeyboardButton("⚡️ ᴄʟᴏsᴇ", callback_data = "close"),]
         ])
         await message.reply_text(
             text = START_MSG.format(
