@@ -222,7 +222,7 @@ async def batch_pro(client: Client, message: Message):
     for chunk_idx, link_chunk in enumerate(link_chunks):
         # Prepare the message text for this chunk
         message_text = f"<b>Batch_pro links ({chunk_idx + 1}/{len(link_chunks)}):</b>\n\n" + "\n".join(
-            [f"Batch Link {i + 1}\n{link}" for i, link in enumerate(link_chunk)]
+            [f"Batch Link {i + 0}\n{link}" for i, link in enumerate(link_chunk)]
         )
         await message.reply_text(message_text, parse_mode="HTML")
 
@@ -279,25 +279,6 @@ async def shortlink2(client: Client, message: Message):
         await asyncio.sleep(DELAY)
         await processing_msg.delete()
         await message.reply_text(f"Your shortened link:\n\n<code>{short_url2}</code>")
-    except Exception as e:
-        await processing_msg.delete()
-        await message.reply_text(f"Error occurred: {e}")
-
-@Client.on_message(filters.private & filters.command('shortlink'))
-async def shortlink(client: Client, message: Message):
-    if len(message.command) < 2:
-        return await message.reply_text("Usage: /shortlink <link>")
-    
-    original_url = message.text.split(maxsplit=1)[1]
-    processing_msg = await message.reply_text("♻️ Processing your links, please wait...")
-    
-    try:
-        # Shorten link using both shorteners
-        short_url1 = await shorten_link(original_url, SHORTENER_API, f"{SHORTENER_WEBSITE}/api")
-        await asyncio.sleep(DELAY)
-        short_url2 = await shorten_link(original_url, SHORTENER_API2, f"{SHORTENER_WEBSITE2}/api")
-        await processing_msg.delete()
-        await message.reply_text(f"Your shortened links:\n\n<code>Shortener 1: {short_url1}\nShortener 2: {short_url2}</code>")
     except Exception as e:
         await processing_msg.delete()
         await message.reply_text(f"Error occurred: {e}")
